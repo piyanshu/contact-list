@@ -1,8 +1,11 @@
 const express = require('express');
-const db = require('./config/mongoose');
 const path = require('path');
-const port = 7000;
+const port = 8000;
+const db = require('./config/mongoose');
+const Contact = require('./models/contact');
 const app = express();
+
+app.use(express.urlencoded());
 
 // Setting up the ejs as template engine
 app.set('view engine', 'ejs');
@@ -13,7 +16,15 @@ app.get('/', function(req, res){
         title : 'Contact List'
     });
 });
-
+app.post('/create-contact', function(req, res){
+    Contact.create(req.body, function(err, contact){
+        if(err){
+            console.log('Error in creating the contact');
+            return;
+        }
+        return res.redirect('back');
+    });
+});
 // Checking server is proper running or not
 app.listen(port, function(err){
     if(err){ 
