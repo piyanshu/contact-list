@@ -3,6 +3,7 @@
         <title>
             <%= locals.title %>
         </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div>
@@ -10,6 +11,21 @@
                 My Contact List
             </h1>
         </div>
+        <ul>
+            <% for(let i of contacts) { %>
+                <li>
+                    <div>
+                        <p><%= i.name %> </p>
+                        <p><%= i.phone %> </p>
+                    </div>
+                    <div>
+                        <a href="/delete-contact/?id=<%= i.id %>">
+                            <i class="fa fa-window-close"></i>
+                        </a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
         <form action="/create-contact"method="POST">
             <input type="string"name="name"placeholder="Enter Name.."required>
             <input type="string"name="phone"placeholder="Enter phone no.."required>

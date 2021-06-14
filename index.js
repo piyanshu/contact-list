@@ -11,11 +11,21 @@ app.use(express.urlencoded());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Print all the contacts
 app.get('/', function(req, res){
-    return res.render('home', {
-        title : 'Contact List'
+    Contact.find({}, function(err, contacts){
+        if(err){
+            console.log('Error in finding the contacts');
+            return;
+        }
+        return res.render('home', {
+            title: 'Contact List',
+            contacts: contacts
+        });
     });
 });
+
+// Creating a contact
 app.post('/create-contact', function(req, res){
     Contact.create(req.body, function(err, contact){
         if(err){
@@ -25,6 +35,19 @@ app.post('/create-contact', function(req, res){
         return res.redirect('back');
     });
 });
+
+// Deleting a contact
+app.get('/delete-contact', function(req, res){
+    let id = req.query.id;
+    Contact.findByIdAndDelete(id, function(err){
+        if(err){
+            console.log('Error in deleting a contact');
+            return;
+        }
+        return res.redirect('back');
+    });
+});
+
 // Checking server is proper running or not
 app.listen(port, function(err){
     if(err){ 
