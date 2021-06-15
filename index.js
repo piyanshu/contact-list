@@ -6,6 +6,7 @@ const Contact = require('./models/contact');
 const app = express();
 
 app.use(express.urlencoded());
+app.use(express.static('assets'));
 
 // Setting up the ejs as template engine
 app.set('view engine', 'ejs');

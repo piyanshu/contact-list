@@ -1,0 +1,51 @@
+html{
+    font-size:20px;
+}
+body{
+    margin:0px;
+    padding:0.7rem;
+}
+#page-heading{
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+}
+#contact-list-container{
+    display:flex;
+    flex-direction:column;  
+    align-items: center;
+}
+.contact{
+    border: 1px solid white;
+    display:flex;
+    justify-content: space-between;
+    padding:0rem 0.5rem;
+    background-color:#2E338B;
+    font-size: 1rem;
+    color:white;
+    font-family: sans-serif;
+}
+.details{
+    width:90%;   
+}
+.icon{
+    width:5%;
+    margin:auto 0px;
+}
+#close{
+    color:white;
+}
+#close:hover{
+    color:lightgrey;
+}
+#new-contact-form{
+    text-align: center;
+}
+#new-contact-form input{
+    font-size: 0.7em;
+    font-weight: 300;
+}
+.border{
+    border:hidden;
+    border-bottom: 1px solid black;
+}

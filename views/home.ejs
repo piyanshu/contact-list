@@ -4,31 +4,33 @@
             <%= locals.title %>
         </title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/home.css">
     </head>
     <body>
-        <div>
-            <h1>
-                My Contact List
-            </h1>
+        <h1 id="page-heading">
+            <i class="fa fa-address-book"></i>
+            My Contact List
+        </h1>
+        <div id="contact-list-container">
+            <ul type="none">
+                <% for(let i of contacts) { %>
+                    <li class="contact font">
+                        <div class="details">
+                            <p><%= i.name %> </p>
+                            <p><%= i.phone %> </p>
+                        </div>
+                        <div class="icon">
+                            <a href="/delete-contact/?id=<%= i.id %>"id="close">
+                                <i class="fa fa-window-close"></i>
+                            </a>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
         </div>
-        <ul>
-            <% for(let i of contacts) { %>
-                <li>
-                    <div>
-                        <p><%= i.name %> </p>
-                        <p><%= i.phone %> </p>
-                    </div>
-                    <div>
-                        <a href="/delete-contact/?id=<%= i.id %>">
-                            <i class="fa fa-window-close"></i>
-                        </a>
-                    </div>
-                </li>
-            <% } %>
-        </ul>
-        <form action="/create-contact"method="POST">
-            <input type="string"name="name"placeholder="Enter Name.."required>
-            <input type="string"name="phone"placeholder="Enter phone no.."required>
+        <form id="new-contact-form"action="/create-contact"method="POST">
+            <input type="string"name="name"placeholder="Enter Name...."class="border"required>
+            <input type="string"name="phone"placeholder="Enter Phone...."class="border"required>
             <input type="submit"value="Add Contact">
         </form>
     </body>
