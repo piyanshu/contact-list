@@ -8,7 +8,7 @@ body{
 #page-heading{
     text-align: center;
     font-family: sans-serif;
-    color: black;
+    color: #626262;
 }
 #contact-list-container{
     display:flex;
@@ -24,12 +24,9 @@ body{
     font-size: 1rem;
     color:white;
     font-family: sans-serif;
-}
-.details{
-    width:90%;   
+    min-width: 20rem;
 }
 .icon{
-    width:5%;
     margin:auto 0px;
 }
 #close{
